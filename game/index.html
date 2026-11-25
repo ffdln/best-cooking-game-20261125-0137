@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warung Sizzle — Dapur Kilat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <!-- Papan skor atas: waktu shift, koin, piring tersaji, dan kombo berjalan. -->
+  <header id="hud">
+    <div class="brand">
+      <span class="brand-mark">WS</span>
+      <div>
+        <div class="brand-name">WARUNG SIZZLE</div>
+        <div class="brand-sub">Dapur Kilat &middot; shift 3 menit</div>
+      </div>
+    </div>
+    <div class="hud-stat"><div class="hud-label">WAKTU</div><div class="hud-value" id="hud-time">3:00</div></div>
+    <div class="hud-stat"><div class="hud-label">KOIN</div><div class="hud-value" id="hud-coins">0</div></div>
+    <div class="hud-stat"><div class="hud-label">TERSAJI</div><div class="hud-value" id="hud-served">0</div></div>
+    <div class="hud-stat"><div class="hud-label">KOMBO</div><div class="hud-value" id="hud-combo">&times;1</div></div>
+  </header>
+
+  <main id="layout">
+    <!-- Kolom kiri: tiket pesanan + buku resep + cara main. -->
+    <section id="orders-panel">
+      <h2>PAPAN PESANAN</h2>
+      <div id="orders"></div>
+      <div id="recipe-book">
+        <h3>BUKU RESEP — klik pesanan buat lihat resep</h3>
+        <div id="recipe-detail">Pilih satu pesanan di atas untuk melihat bahan-bahannya.</div>
+      </div>
+      <p id="hint">Cara main: klik bahan &rarr; masuk wajan &rarr; tunggu matang &rarr; klik wajan buat pindah ke piring &rarr; klik piring lalu klik pesanan yang cocok.</p>
+    </section>
+
+    <!-- Dapur: dua kompor, piring saji, dan pesan singkat (toast). -->
+    <section id="kitchen">
+      <div id="stoves">
+        <div class="stove" id="stove-0">
+          <div class="stove-label">KOMPOR 1</div>
+          <div class="pan">
+            <div class="pan-food"></div>
+            <div class="pan-progress"><div class="pan-fill"></div></div>
+            <div class="pan-state">kosong</div>
+          </div>
+          <div class="pan-slots"></div>
+          <button class="trash-btn" type="button">Buang</button>
+        </div>
+        <div class="stove" id="stove-1">
+          <div class="stove-label">KOMPOR 2</div>
+          <div class="pan">
+            <div class="pan-food"></div>
+            <div class="pan-progress"><div class="pan-fill"></div></div>
+            <div class="pan-state">kosong</div>
+          </div>
+          <div class="pan-slots"></div>
+          <button class="trash-btn" type="button">Buang</button>
+        </div>
+      </div>
+      <div id="plate-zone">
+        <div class="plate-label">PIRING SAJI — klik lalu klik pesanan</div>
+        <div id="plate"><div class="plate-dish"></div><div class="plate-state">piring kosong</div></div>
+      </div>
+      <div id="toast"></div>
+    </section>
+  </main>
+
+  <!-- Deretan bahan: 10 tempat bahan, tombol keyboard 1 sampai 0. -->
+  <footer id="ingredients">
+    <div class="ing-label">BAHAN</div>
+    <div id="bins"></div>
+  </footer>
+
+  <!-- Layar pembuka / penutup shift. -->
+  <div id="overlay" class="hidden">
+    <div id="overlay-card"></div>
+  </div>
+</div>
+<script src="src/game.js"></script>
+</body>
+</html>
